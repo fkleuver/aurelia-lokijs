@@ -8,3 +8,6 @@ export function configure(fxconfig, configureSettings) {
     const provider = new LokiProvider(settings);
     fxconfig.instance(LokiProvider, provider);
 }
+export * from "./adapters/loki-indexed-adapter";
+export * from "./loki-provider";
+export * from "./loki-settings";
