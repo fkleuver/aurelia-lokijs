@@ -20,7 +20,19 @@ or via the Aurelia CLI
 au install aurelia-lokijs
 ```
 
-If you are using webpack, no additional steps are required. Simply import a decorator and it will work.
+Also install the peer-dependency `lokijs`:
+
+```bash
+npm i lokijs
+```
+
+If you use typescript, you'll also want the typings for `lokijs`:
+
+```bash
+npm i @types/lokijs -D
+```
+
+If you are using webpack, no additional steps are required.
 
 ## Aurelia-CLI
 
@@ -44,8 +56,69 @@ alternatively you can manually add the dependency to your vendor.bundles:
     "name": "aurelia-lokijs",
     "path": "../node_modules/aurelia-lokijs/dist/amd",
     "main": "aurelia-lokijs"
+  },
+  {
+    "name": "lokijs",
+    "path": "../node_modules/lokijs/build",
+    "main": "lokijs"
   }
 ]
+```
+
+## Configuration
+In your `main.ts` register the plugin like so:
+
+```typescript
+import { Aurelia } from "aurelia-framework"
+
+export function configure(au: Aurelia) {
+  au.use
+    .standardConfiguration()
+    .feature("resources");
+
+  ...
+
+  au.use.plugin("aurelia-lokijs"); // <----- REGISTER THE PLUGIN
+
+  // Or, optional configuration:
+  au.use.plugin("aurelia-lokijs", (settings: ILokiSettings) => {
+    // Below are the default options.
+    // All other LokiJS options (which you normally pass into the Loki constructor) can be set here too
+
+    this.filename = "aurelia-lokijs.db";
+
+    // Will use LokiIndexedAdapter if IndexedDB is defined, otherwise LocalStorageAdapter
+    this.useIndexedDbIfAvailable = true;
+
+    this.autoload = true;
+    this.autosave = true;
+    this.autosaveInterval = 2500;
+
+    // Setting this to true will add an "onInsert" event to each provider-created collection
+    // that copies the generated $loki to the "id" property of the saved entity (if not already set).
+    // Setting this to a string will copy $loki to that property name instead.
+    this.setEntityId = undefined;
+  });
+
+  au.start().then(() => au.setRoot());
+}
+```
+
+## Usage
+In your view model:
+
+```typescript
+import { autoinject } from "aurelia-dependency-injection";
+import { LokiProvider } from "aurelia-lokijs";
+
+@autoinject()
+export class FooVM {
+  private fooCollection: Collection<Foo>;
+
+  constructor(lokiProvider: LokiProvider) {
+    this.fooCollection = lokiProvider.getOrAddCollection<Foo>("foos", {}/* options (optional), default: { disableChangesApi: false } */);
+  }
+}
 ```
 
 ## Building The Code

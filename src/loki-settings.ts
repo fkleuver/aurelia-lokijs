@@ -4,6 +4,7 @@ export interface ILokiSettings
     Partial<ThrottledSaveDrainOptions> {
   filename: string;
   useIndexedDbIfAvailable: boolean;
+  setEntityId?: boolean | string;
 }
 
 export class LokiSettings implements ILokiSettings {

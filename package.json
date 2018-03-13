@@ -108,6 +108,11 @@
           "name": "aurelia-lokijs",
           "path": "../node_modules/aurelia-lokijs/dist/amd",
           "main": "aurelia-lokijs"
+        },
+        {
+          "name": "lokijs",
+          "path": "../node_modules/lokijs/build",
+          "main": "lokijs"
         }
       ]
     }
