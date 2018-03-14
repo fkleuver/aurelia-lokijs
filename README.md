@@ -115,7 +115,7 @@ import { lokiCollection } from "aurelia-lokijs";
 export class FooVM {
   private bars: Collection<Bar>;
 
-  constructor(@lokiCollection("bars")bars: Collection<Bar>) {
+  constructor(@lokiCollection("bars")bars: any) {
     this.bars = bars;
   }
 }
