@@ -14,3 +14,5 @@ export function configure(fxconfig: FrameworkConfiguration, configureSettings?: 
 export * from "./adapters/loki-indexed-db-adapter";
 export * from "./loki-provider";
 export * from "./loki-settings";
+export * from "./decorators";
+export * from "./resolvers";
