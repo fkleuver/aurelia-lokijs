@@ -1,4 +1,4 @@
-System.register(["./loki-provider", "./loki-settings", "./adapters/loki-indexed-adapter"], function (exports_1, context_1) {
+System.register(["./loki-provider", "./loki-settings", "./adapters/loki-indexed-db-adapter"], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
     function configure(fxconfig, configureSettings) {
@@ -31,8 +31,8 @@ System.register(["./loki-provider", "./loki-settings", "./adapters/loki-indexed-
                 loki_settings_1 = loki_settings_1_1;
                 exportStar_1(loki_settings_1_1);
             },
-            function (loki_indexed_adapter_1_1) {
-                exportStar_1(loki_indexed_adapter_1_1);
+            function (loki_indexed_db_adapter_1_1) {
+                exportStar_1(loki_indexed_db_adapter_1_1);
             }
         ],
         execute: function () {

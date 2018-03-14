@@ -5,5 +5,6 @@ export class LokiSettings {
         this.autoload = true;
         this.autosave = true;
         this.autosaveInterval = 2500;
+        this.env = "BROWSER";
     }
 }

@@ -14,6 +14,6 @@ function configure(fxconfig, configureSettings) {
     fxconfig.instance(loki_provider_1.LokiProvider, provider);
 }
 exports.configure = configure;
-__export(require("./adapters/loki-indexed-adapter"));
+__export(require("./adapters/loki-indexed-db-adapter"));
 __export(require("./loki-provider"));
 __export(require("./loki-settings"));

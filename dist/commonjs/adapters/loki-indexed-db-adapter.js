@@ -22,7 +22,8 @@ Object.defineProperty(exports, "__esModule", { value: true });
  * @example
  * var idbAdapter = new LokiIndexedAdapter('finance');
  */
-class LokiIndexedAdapter {
+/* istanbul ignore next */
+class LokiIndexedDbAdapter {
     /**
      *
      * @constructor LokiIndexedAdapter
@@ -33,7 +34,7 @@ class LokiIndexedAdapter {
         this.app = appname || "loki";
         // keep reference to catalog class for base AKV operations
         this.catalog = null;
-        if (!LokiIndexedAdapter.checkAvailability()) {
+        if (!LokiIndexedDbAdapter.checkAvailability()) {
             throw new Error("indexedDB does not seem to be supported for your environment");
         }
     }
@@ -280,12 +281,13 @@ class LokiIndexedAdapter {
         });
     }
 }
-exports.LokiIndexedAdapter = LokiIndexedAdapter;
+exports.LokiIndexedDbAdapter = LokiIndexedDbAdapter;
 /**
  * LokiCatalog - underlying App/Key/Value catalog persistence
  *    This non-interface class implements the actual persistence.
  *    Used by the IndexedAdapter class.
  */
+/* istanbul ignore next */
 class LokiCatalog {
     constructor(callback) {
         this.db = null;

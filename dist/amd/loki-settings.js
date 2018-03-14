@@ -8,6 +8,7 @@ define(["require", "exports"], function (require, exports) {
             this.autoload = true;
             this.autosave = true;
             this.autosaveInterval = 2500;
+            this.env = "BROWSER";
         }
     }
     exports.LokiSettings = LokiSettings;

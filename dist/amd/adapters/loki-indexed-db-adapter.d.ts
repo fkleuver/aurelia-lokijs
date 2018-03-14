@@ -10,7 +10,7 @@
  * @example
  * var idbAdapter = new LokiIndexedAdapter('finance');
  */
-export declare class LokiIndexedAdapter {
+export declare class LokiIndexedDbAdapter {
     app: string;
     catalog: any;
     /**

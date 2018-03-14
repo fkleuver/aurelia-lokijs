@@ -20,7 +20,8 @@
  * @example
  * var idbAdapter = new LokiIndexedAdapter('finance');
  */
-export class LokiIndexedAdapter {
+/* istanbul ignore next */
+export class LokiIndexedDbAdapter {
     /**
      *
      * @constructor LokiIndexedAdapter
@@ -31,7 +32,7 @@ export class LokiIndexedAdapter {
         this.app = appname || "loki";
         // keep reference to catalog class for base AKV operations
         this.catalog = null;
-        if (!LokiIndexedAdapter.checkAvailability()) {
+        if (!LokiIndexedDbAdapter.checkAvailability()) {
             throw new Error("indexedDB does not seem to be supported for your environment");
         }
     }
@@ -283,6 +284,7 @@ export class LokiIndexedAdapter {
  *    This non-interface class implements the actual persistence.
  *    Used by the IndexedAdapter class.
  */
+/* istanbul ignore next */
 export class LokiCatalog {
     constructor(callback) {
         this.db = null;

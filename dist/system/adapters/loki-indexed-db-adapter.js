@@ -2,7 +2,7 @@
 System.register([], function (exports_1, context_1) {
     "use strict";
     var __moduleName = context_1 && context_1.id;
-    var LokiIndexedAdapter, LokiCatalog;
+    var LokiIndexedDbAdapter, LokiCatalog;
     return {
         setters: [],
         execute: function () {
@@ -27,7 +27,8 @@ System.register([], function (exports_1, context_1) {
              * @example
              * var idbAdapter = new LokiIndexedAdapter('finance');
              */
-            LokiIndexedAdapter = class LokiIndexedAdapter {
+            /* istanbul ignore next */
+            LokiIndexedDbAdapter = class LokiIndexedDbAdapter {
                 /**
                  *
                  * @constructor LokiIndexedAdapter
@@ -38,7 +39,7 @@ System.register([], function (exports_1, context_1) {
                     this.app = appname || "loki";
                     // keep reference to catalog class for base AKV operations
                     this.catalog = null;
-                    if (!LokiIndexedAdapter.checkAvailability()) {
+                    if (!LokiIndexedDbAdapter.checkAvailability()) {
                         throw new Error("indexedDB does not seem to be supported for your environment");
                     }
                 }
@@ -285,12 +286,13 @@ System.register([], function (exports_1, context_1) {
                     });
                 }
             };
-            exports_1("LokiIndexedAdapter", LokiIndexedAdapter);
+            exports_1("LokiIndexedDbAdapter", LokiIndexedDbAdapter);
             /**
              * LokiCatalog - underlying App/Key/Value catalog persistence
              *    This non-interface class implements the actual persistence.
              *    Used by the IndexedAdapter class.
              */
+            /* istanbul ignore next */
             LokiCatalog = class LokiCatalog {
                 constructor(callback) {
                     this.db = null;

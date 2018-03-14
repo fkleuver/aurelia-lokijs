@@ -12,6 +12,7 @@ System.register([], function (exports_1, context_1) {
                     this.autoload = true;
                     this.autosave = true;
                     this.autosaveInterval = 2500;
+                    this.env = "BROWSER";
                 }
             };
             exports_1("LokiSettings", LokiSettings);

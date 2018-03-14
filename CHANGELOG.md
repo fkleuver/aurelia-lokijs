@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.0"></a>
+# [0.3.0](https://github.com/fkleuver/aurelia-lokijs/compare/v0.2.2...v0.3.0) (2018-03-14)
+
+
+### Bug Fixes
+
+* **loki-indexed-adapter:** change the name of LokiIndexedAdapter to LokiIndexedDbAdapter to prevent conflict with the original ([85049b2](https://github.com/fkleuver/aurelia-lokijs/commit/85049b2))
+* **settings:** default to BROWSER env ([1aff02e](https://github.com/fkleuver/aurelia-lokijs/commit/1aff02e))
+
+
+
 <a name="0.2.2"></a>
 ## [0.2.2](https://github.com/fkleuver/aurelia-lokijs/compare/v0.2.1...v0.2.2) (2018-03-13)
 
