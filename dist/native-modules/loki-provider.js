@@ -3,7 +3,7 @@ import { LokiIndexedDbAdapter } from "./adapters/loki-indexed-db-adapter";
 export class LokiProvider {
     constructor(settings) {
         this.setEntityId = (obj) => {
-            if (obj[this.entityIdProperty] === undefined) {
+            if (!/Number/.test(Object.prototype.toString.call(obj[this.entityIdProperty]))) {
                 obj[this.entityIdProperty] = obj.$loki;
             }
         };
