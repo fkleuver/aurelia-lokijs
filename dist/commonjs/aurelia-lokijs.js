@@ -17,3 +17,5 @@ exports.configure = configure;
 __export(require("./adapters/loki-indexed-db-adapter"));
 __export(require("./loki-provider"));
 __export(require("./loki-settings"));
+__export(require("./decorators"));
+__export(require("./resolvers"));

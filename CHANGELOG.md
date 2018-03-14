@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.4.2"></a>
+## [0.4.2](https://github.com/fkleuver/aurelia-lokijs/compare/v0.4.1...v0.4.2) (2018-03-14)
+
+
+### Bug Fixes
+
+* add decorators and resolvers exports ([dab73f7](https://github.com/fkleuver/aurelia-lokijs/commit/dab73f7))
+
+
+
 <a name="0.4.1"></a>
 ## [0.4.1](https://github.com/fkleuver/aurelia-lokijs/compare/v0.4.0...v0.4.1) (2018-03-14)
 
