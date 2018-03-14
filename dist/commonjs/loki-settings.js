@@ -1,5 +1,6 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
+// @internal
 class LokiSettings {
     constructor() {
         this.filename = "aurelia-lokijs.db";

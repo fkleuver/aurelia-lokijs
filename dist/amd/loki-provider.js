@@ -5,6 +5,9 @@ define(["require", "exports", "lokijs", "./adapters/loki-indexed-db-adapter"], f
     "use strict";
     Object.defineProperty(exports, "__esModule", { value: true });
     lokijs_1 = __importDefault(lokijs_1);
+    /**
+     * Wrapper class that instantiates the loki db & adapter, and manages collections
+     */
     class LokiProvider {
         constructor(settings) {
             this.setEntityId = (obj) => {
@@ -29,6 +32,11 @@ define(["require", "exports", "lokijs", "./adapters/loki-indexed-db-adapter"], f
             this.entityIdProperty = /String/.test(Object.prototype.toString.call(setId)) ? setId : "id";
             this.setEntityIdAppliedKey = Symbol("setEntityId");
         }
+        /**
+         * Gets the collection with the specified name
+         *
+         * Creates a new one if it does not exist, otherwise returns the existing one
+         */
         getOrAddCollection(name, options) {
             let collection = this.db.getCollection(name);
             if (collection === null) {

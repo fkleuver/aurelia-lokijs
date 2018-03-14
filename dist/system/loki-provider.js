@@ -12,6 +12,9 @@ System.register(["lokijs", "./adapters/loki-indexed-db-adapter"], function (expo
             }
         ],
         execute: function () {
+            /**
+             * Wrapper class that instantiates the loki db & adapter, and manages collections
+             */
             LokiProvider = class LokiProvider {
                 constructor(settings) {
                     this.setEntityId = (obj) => {
@@ -36,6 +39,11 @@ System.register(["lokijs", "./adapters/loki-indexed-db-adapter"], function (expo
                     this.entityIdProperty = /String/.test(Object.prototype.toString.call(setId)) ? setId : "id";
                     this.setEntityIdAppliedKey = Symbol("setEntityId");
                 }
+                /**
+                 * Gets the collection with the specified name
+                 *
+                 * Creates a new one if it does not exist, otherwise returns the existing one
+                 */
                 getOrAddCollection(name, options) {
                     let collection = this.db.getCollection(name);
                     if (collection === null) {

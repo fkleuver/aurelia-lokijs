@@ -1,3 +1,4 @@
+// @internal
 export class LokiSettings {
     constructor() {
         this.filename = "aurelia-lokijs.db";

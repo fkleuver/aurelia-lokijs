@@ -5,6 +5,7 @@ System.register([], function (exports_1, context_1) {
     return {
         setters: [],
         execute: function () {
+            // @internal
             LokiSettings = class LokiSettings {
                 constructor() {
                     this.filename = "aurelia-lokijs.db";
