@@ -109,14 +109,14 @@ In your view model:
 
 ```typescript
 import { autoinject } from "aurelia-dependency-injection";
-import { LokiProvider } from "aurelia-lokijs";
+import { lokiCollection } from "aurelia-lokijs";
 
 @autoinject()
 export class FooVM {
-  private fooCollection: Collection<Foo>;
+  private bars: Collection<Bar>;
 
-  constructor(lokiProvider: LokiProvider) {
-    this.fooCollection = lokiProvider.getOrAddCollection<Foo>("foos", {}/* options (optional), default: { disableChangesApi: false } */);
+  constructor(@lokiCollection("bars")bars: Collection<Bar>) {
+    this.bars = bars;
   }
 }
 ```
