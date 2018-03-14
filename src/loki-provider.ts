@@ -2,6 +2,9 @@ import lokijs from "lokijs";
 import { LokiIndexedDbAdapter } from "./adapters/loki-indexed-db-adapter";
 import { ILokiSettings } from "./loki-settings";
 
+/**
+ * Wrapper class that instantiates the loki db & adapter, and manages collections
+ */
 export class LokiProvider {
   public persistenceAdapter: LokiPersistenceAdapter;
   public db: Loki;
@@ -28,6 +31,11 @@ export class LokiProvider {
     this.setEntityIdAppliedKey = Symbol("setEntityId");
   }
 
+  /**
+   * Gets the collection with the specified name
+   *
+   * Creates a new one if it does not exist, otherwise returns the existing one
+   */
   public getOrAddCollection<T extends Object>(name: string, options?: Partial<CollectionOptions<T>>): Collection<T> {
     let collection = this.db.getCollection<T>(name);
     if (collection === null) {
@@ -55,5 +63,5 @@ export class LokiProvider {
     if (!/Number/.test(Object.prototype.toString.call(obj[this.entityIdProperty]))) {
       obj[this.entityIdProperty] = obj.$loki;
     }
-  };
+  }
 }
