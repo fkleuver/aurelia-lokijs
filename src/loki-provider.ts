@@ -6,6 +6,8 @@ import { ILokiSettings } from "./loki-settings";
  * Wrapper class that instantiates the loki db & adapter, and manages collections
  */
 export class LokiProvider {
+  public static INSTANCE: LokiProvider;
+
   public persistenceAdapter: LokiPersistenceAdapter;
   public db: Loki;
   private readonly settings: ILokiSettings;
@@ -29,6 +31,15 @@ export class LokiProvider {
     const setId = settings.setEntityId;
     this.entityIdProperty = /String/.test(Object.prototype.toString.call(setId)) ? (setId as string) : "id";
     this.setEntityIdAppliedKey = Symbol("setEntityId");
+  }
+
+  /**
+   * Makes this provider instance globally reachable through LokiProvider.INSTANCE
+   */
+  public makeGlobal(): LokiProvider {
+    LokiProvider.INSTANCE = this;
+
+    return this;
   }
 
   /**
@@ -63,5 +74,5 @@ export class LokiProvider {
     if (!/Number/.test(Object.prototype.toString.call(obj[this.entityIdProperty]))) {
       obj[this.entityIdProperty] = obj.$loki;
     }
-  }
+  };
 }

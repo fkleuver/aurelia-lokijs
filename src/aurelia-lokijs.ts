@@ -7,7 +7,7 @@ export function configure(fxconfig: FrameworkConfiguration, configureSettings?: 
   if (typeof configureSettings === "function") {
     configureSettings(settings);
   }
-  const provider = new LokiProvider(settings);
+  const provider = new LokiProvider(settings).makeGlobal();
   fxconfig.instance(LokiProvider, provider);
 }
 
