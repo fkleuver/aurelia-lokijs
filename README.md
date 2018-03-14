@@ -104,6 +104,14 @@ export function configure(au: Aurelia) {
 }
 ```
 
+### Note for webpack users: you'll need to import the actual loki package somewhere, or tree shaking might exclude it:
+
+Adding this to `main.ts` should suffice:
+
+```typescript
+import "lokijs";
+```
+
 ## Usage
 In your view model:
 
