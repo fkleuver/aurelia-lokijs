@@ -107,6 +107,8 @@ export function configure(au: Aurelia) {
 ## Usage
 In your view model:
 
+* Parameter decorator
+
 ```typescript
 import { autoinject } from "aurelia-dependency-injection";
 import { lokiCollection } from "aurelia-lokijs";
@@ -120,6 +122,37 @@ export class FooVM {
   }
 }
 ```
+
+* Resolver
+
+```typescript
+import { LokiCollection } from "aurelia-lokijs";
+
+@inject(LokiCollection.of("bars"))
+export class FooVM {
+  private bars: Collection<Bar>;
+
+  constructor(bars: any) {
+    this.bars = bars;
+  }
+}
+```
+
+* Manual
+
+```typescript
+import { autoinject } from "aurelia-dependency-injection";
+
+@autoinject()
+export class FooVM {
+  private bars: Collection<Bar>;
+
+  constructor(provider: LokiProvider) {
+    this.bars = provider.getOrAddCollection("bars");
+  }
+}
+```
+
 
 ## Building The Code
 
