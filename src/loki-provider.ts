@@ -52,7 +52,7 @@ export class LokiProvider {
     }
   }
   private setEntityId = (obj: any) => {
-    if (obj[this.entityIdProperty] === undefined) {
+    if (!/Number/.test(Object.prototype.toString.call(obj[this.entityIdProperty]))) {
       obj[this.entityIdProperty] = obj.$loki;
     }
   };
