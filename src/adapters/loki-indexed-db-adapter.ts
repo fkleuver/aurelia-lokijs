@@ -22,6 +22,7 @@
  * @example
  * var idbAdapter = new LokiIndexedAdapter('finance');
  */
+/* istanbul ignore next */
 export class LokiIndexedDbAdapter {
   public app: string;
   public catalog: any;
@@ -325,6 +326,7 @@ export class LokiIndexedDbAdapter {
  *    This non-interface class implements the actual persistence.
  *    Used by the IndexedAdapter class.
  */
+/* istanbul ignore next */
 export class LokiCatalog {
   public db: any;
 
