@@ -1,5 +1,5 @@
 import lokijs from "lokijs";
-import { LokiIndexedAdapter } from "./adapters/loki-indexed-adapter";
+import { LokiIndexedDbAdapter } from "./adapters/loki-indexed-db-adapter";
 import { ILokiSettings } from "./loki-settings";
 
 export class LokiProvider {
@@ -10,8 +10,8 @@ export class LokiProvider {
   constructor(settings: ILokiSettings) {
     this.settings = settings;
     if (!settings.adapter) {
-      if (settings.useIndexedDbIfAvailable && LokiIndexedAdapter.checkAvailability()) {
-        this.persistenceAdapter = new LokiIndexedAdapter("default");
+      if (settings.useIndexedDbIfAvailable && LokiIndexedDbAdapter.checkAvailability()) {
+        this.persistenceAdapter = new LokiIndexedDbAdapter("default");
       } else {
         this.persistenceAdapter = new lokijs.LokiLocalStorageAdapter();
       }

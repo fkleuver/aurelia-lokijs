@@ -22,7 +22,7 @@
  * @example
  * var idbAdapter = new LokiIndexedAdapter('finance');
  */
-export class LokiIndexedAdapter {
+export class LokiIndexedDbAdapter {
   public app: string;
   public catalog: any;
 
@@ -38,7 +38,7 @@ export class LokiIndexedAdapter {
     // keep reference to catalog class for base AKV operations
     this.catalog = null;
 
-    if (!LokiIndexedAdapter.checkAvailability()) {
+    if (!LokiIndexedDbAdapter.checkAvailability()) {
       throw new Error("indexedDB does not seem to be supported for your environment");
     }
   }
