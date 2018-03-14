@@ -6,7 +6,7 @@ System.register(["./loki-provider", "./loki-settings", "./adapters/loki-indexed-
         if (typeof configureSettings === "function") {
             configureSettings(settings);
         }
-        const provider = new loki_provider_1.LokiProvider(settings);
+        const provider = new loki_provider_1.LokiProvider(settings).makeGlobal();
         fxconfig.instance(loki_provider_1.LokiProvider, provider);
     }
     exports_1("configure", configure);

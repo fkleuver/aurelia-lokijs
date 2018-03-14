@@ -4,12 +4,17 @@ import { ILokiSettings } from "./loki-settings";
  * Wrapper class that instantiates the loki db & adapter, and manages collections
  */
 export declare class LokiProvider {
+    static INSTANCE: LokiProvider;
     persistenceAdapter: LokiPersistenceAdapter;
     db: Loki;
     private readonly settings;
     private readonly entityIdProperty;
     private readonly setEntityIdAppliedKey;
     constructor(settings: ILokiSettings);
+    /**
+     * Makes this provider instance globally reachable through LokiProvider.INSTANCE
+     */
+    makeGlobal(): LokiProvider;
     /**
      * Gets the collection with the specified name
      *

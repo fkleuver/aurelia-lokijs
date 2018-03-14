@@ -10,7 +10,7 @@ function configure(fxconfig, configureSettings) {
     if (typeof configureSettings === "function") {
         configureSettings(settings);
     }
-    const provider = new loki_provider_1.LokiProvider(settings);
+    const provider = new loki_provider_1.LokiProvider(settings).makeGlobal();
     fxconfig.instance(loki_provider_1.LokiProvider, provider);
 }
 exports.configure = configure;

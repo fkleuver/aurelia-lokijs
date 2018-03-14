@@ -40,6 +40,13 @@ System.register(["lokijs", "./adapters/loki-indexed-db-adapter"], function (expo
                     this.setEntityIdAppliedKey = Symbol("setEntityId");
                 }
                 /**
+                 * Makes this provider instance globally reachable through LokiProvider.INSTANCE
+                 */
+                makeGlobal() {
+                    LokiProvider.INSTANCE = this;
+                    return this;
+                }
+                /**
                  * Gets the collection with the specified name
                  *
                  * Creates a new one if it does not exist, otherwise returns the existing one

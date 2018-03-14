@@ -5,7 +5,7 @@ export function configure(fxconfig, configureSettings) {
     if (typeof configureSettings === "function") {
         configureSettings(settings);
     }
-    const provider = new LokiProvider(settings);
+    const provider = new LokiProvider(settings).makeGlobal();
     fxconfig.instance(LokiProvider, provider);
 }
 export * from "./adapters/loki-indexed-db-adapter";

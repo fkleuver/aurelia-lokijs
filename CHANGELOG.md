@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.5.0"></a>
+# [0.5.0](https://github.com/fkleuver/aurelia-lokijs/compare/v0.4.3...v0.5.0) (2018-03-14)
+
+
+### Features
+
+* **provider:** add static INSTANCE property for global singleton access ([b9d9308](https://github.com/fkleuver/aurelia-lokijs/commit/b9d9308))
+
+
+
 <a name="0.4.3"></a>
 ## [0.4.3](https://github.com/fkleuver/aurelia-lokijs/compare/v0.4.2...v0.4.3) (2018-03-14)
 
