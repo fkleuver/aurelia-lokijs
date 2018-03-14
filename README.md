@@ -59,7 +59,7 @@ alternatively you can manually add the dependency to your vendor.bundles:
   },
   {
     "name": "lokijs",
-    "path": "../node_modules/lokijs/build",
+    "path": "../node_modules/lokijs/src",
     "main": "lokijs"
   }
 ]
@@ -102,14 +102,6 @@ export function configure(au: Aurelia) {
 
   au.start().then(() => au.setRoot());
 }
-```
-
-### Note for webpack users: you'll need to import the actual loki package somewhere, or tree shaking might exclude it:
-
-Adding this to `main.ts` should suffice:
-
-```typescript
-import "lokijs";
 ```
 
 ## Usage

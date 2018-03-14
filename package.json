@@ -111,7 +111,7 @@
         },
         {
           "name": "lokijs",
-          "path": "../node_modules/lokijs/build",
+          "path": "../node_modules/lokijs/src",
           "main": "lokijs"
         }
       ]
