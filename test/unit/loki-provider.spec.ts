@@ -6,6 +6,7 @@ import { ILokiSettings, LokiSettings } from "src/loki-settings";
 
 describe("LokiProvider", () => {
   let stateBackup: any;
+  let dummyObj: any;
   let sut: LokiProvider;
   let settings: ILokiSettings;
 
@@ -14,6 +15,7 @@ describe("LokiProvider", () => {
   });
 
   beforeEach(() => {
+    dummyObj = Object.create(Object.prototype);
     settings = new LokiSettings();
     stateBackup.checkAvailability = LokiIndexedDbAdapter.checkAvailability;
   });
@@ -87,7 +89,7 @@ describe("LokiProvider", () => {
       const cbs = coll.events.insert.length;
       sut.getOrAddCollection("foo");
 
-      expect(coll.events.insert.length).toBe(cbs);
+      expect(coll.events.insert.length).toEqual(cbs);
     });
   });
 
@@ -97,38 +99,69 @@ describe("LokiProvider", () => {
       settings.setEntityId = true;
       sut = new LokiProvider(settings);
 
-      const dummyObj = Object.create(Object.prototype);
-      const coll = sut.getOrAddCollection("foo");
-      coll.insertOne(dummyObj);
+      sut.getOrAddCollection("foo").insertOne(dummyObj);
 
-      expect(dummyObj.$loki).toBeDefined();
-      expect(dummyObj.$loki).toBe(dummyObj.id);
+      expect(dummyObj.id).toEqual(1);
+    });
+
+    it("should set the \"id\" property of an object if it is undefined", () => {
+      settings.setEntityId = true;
+      sut = new LokiProvider(settings);
+
+      dummyObj.id = undefined;
+      sut.getOrAddCollection("foo").insertOne(dummyObj);
+
+      expect(dummyObj.id).toEqual(1);
+    });
+
+    it("should set the \"id\" property of an object if it is null", () => {
+      settings.setEntityId = true;
+      sut = new LokiProvider(settings);
+
+      dummyObj.id = null;
+      sut.getOrAddCollection("foo").insertOne(dummyObj);
+
+      expect(dummyObj.id).toEqual(1);
+    });
+
+    it("should set the \"id\" property of an object if it is a string", () => {
+      settings.setEntityId = true;
+      sut = new LokiProvider(settings);
+
+      dummyObj.id = "1";
+      sut.getOrAddCollection("foo").insertOne(dummyObj);
+
+      expect(dummyObj.id).toEqual(1);
+    });
+
+    it("should NOT set the \"id\" property of an object if it is a number", () => {
+      settings.setEntityId = true;
+      sut = new LokiProvider(settings);
+
+      dummyObj.id = 1234;
+      sut.getOrAddCollection("foo").insertOne(dummyObj);
+
+      expect(dummyObj.id).toEqual(1234);
+    });
+
+    it("should NOT set the \"id\" property of an object if it is a Number (object)", () => {
+      settings.setEntityId = true;
+      sut = new LokiProvider(settings);
+
+      // tslint:disable-next-line:no-construct
+      dummyObj.id = new Number(1234);
+      sut.getOrAddCollection("foo").insertOne(dummyObj);
+
+      expect(dummyObj.id).toEqual(1234);
     });
 
     it("should set the specified property of an object equal to \"$loki\" on insert when setEntityId is a string", () => {
       settings.setEntityId = "bar";
       sut = new LokiProvider(settings);
 
-      const dummyObj = Object.create(Object.prototype);
-      const coll = sut.getOrAddCollection("foo");
-      coll.insertOne(dummyObj);
+      sut.getOrAddCollection("foo").insertOne(dummyObj);
 
-      expect(dummyObj.$loki).toBeDefined();
-      expect(dummyObj.$loki).toBe(dummyObj.bar);
-    });
-
-    it("should not set the \"id\" property of an object if it was already defined", () => {
-      settings.setEntityId = true;
-      sut = new LokiProvider(settings);
-
-      const dummyObj = Object.create(Object.prototype);
-      dummyObj.id = null;
-      const coll = sut.getOrAddCollection("foo");
-      coll.insertOne(dummyObj);
-
-      expect(dummyObj.$loki).toBeDefined();
-      expect(dummyObj.$loki).not.toBe(dummyObj.id);
-      expect(dummyObj.id).toEqual(null);
+      expect(dummyObj.bar).toEqual(1);
     });
   })
 
