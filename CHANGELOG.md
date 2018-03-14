@@ -2,6 +2,16 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="0.3.1"></a>
+## [0.3.1](https://github.com/fkleuver/aurelia-lokijs/compare/v0.3.0...v0.3.1) (2018-03-14)
+
+
+### Bug Fixes
+
+* **install:** correct the aurelia.json import for lokijs ([3f0ce92](https://github.com/fkleuver/aurelia-lokijs/commit/3f0ce92))
+
+
+
 <a name="0.3.0"></a>
 # [0.3.0](https://github.com/fkleuver/aurelia-lokijs/compare/v0.2.2...v0.3.0) (2018-03-14)
 
