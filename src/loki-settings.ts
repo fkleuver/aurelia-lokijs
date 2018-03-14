@@ -21,5 +21,6 @@ export class LokiSettings implements ILokiSettings {
     this.autoload = true;
     this.autosave = true;
     this.autosaveInterval = 2500;
+    (this as ILokiSettings).env = "BROWSER";
   }
 }
